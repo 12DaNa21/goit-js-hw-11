@@ -9,17 +9,20 @@
     <script type="module" crossorigin src="/goit-js-hw-11/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-5b791d57.js">
     <link rel="stylesheet" href="/goit-js-hw-11/assets/vendor-cf6910df.css">
-    <link rel="stylesheet" href="/goit-js-hw-11/assets/index-e6a9a36f.css">
+    <link rel="stylesheet" href="/goit-js-hw-11/assets/index-f158f920.css">
   </head>
   <body>
-    <form id="searchForm">
-      <label for="searchQuery">Search:</label>
-      <input type="text" id="searchQuery" name="searchQuery" required>
-      <button type="submit">Search</button>
-    </form>
-    <div id="gallery"></div>
-         
-
     
+    <div class="container">
+      <form id="searchForm">
+          <input type="text" id="searchInput" placeholder="Search images..." required>
+          <button type="submit">Search</button>
+      </form>
+      <div id="loader" class="loader"></div>
+      <div id="gallery" class="gallery"></div>
+      
+  </div>
+
+  
   </body>
 </html>
