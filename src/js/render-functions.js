@@ -17,43 +17,28 @@ export function displayImages(images) {
     }
 
     images.forEach(image => {
-        const card = document.createElement('div');
-        card.classList.add('card');
-        const tagA = document.createElement('a');
-        tagA.href = image.webformatURL;
-        
-        const img = document.createElement('img');
-        img.src = image.webformatURL;
-        img.alt = image.tags;
-        
-        img.addEventListener('click', () => {
+        const cardHTML = `
+            <div class="card">
+                <a href="${image.webformatURL}">
+                    <img src="${image.webformatURL}" alt="${image.tags}">
+                </a>
+                <p>Likes: ${image.likes}</p>
+                <p>Views: ${image.views}</p>
+                <p>Comments: ${image.comments}</p>
+                <p>Downloads: ${image.downloads}</p>
+            </div>
+        `;
+    
+        gallery.insertAdjacentHTML('beforeend', cardHTML);
+    
+        const imgElement = gallery.lastElementChild.querySelector('img');
+        imgElement.addEventListener('click', () => {
             lightbox.open({
                 items: [{ src: image.largeImageURL, title: image.tags }],
             });
-            
         });
-        const likes = document.createElement('p');
-        likes.textContent = 'Likes: ' + image.likes;
-  
-        const views = document.createElement('p');
-        views.textContent = 'Views: ' + image.views;
-  
-        const comments = document.createElement('p');
-        comments.textContent = 'Comments: ' + image.comments;
-  
-        const downloads = document.createElement('p');
-        downloads.textContent = 'Downloads: ' + image.downloads;
-  
-        tagA.appendChild(img);
-        card.appendChild(tagA);
-        card.appendChild(likes);
-        card.appendChild(views);
-        card.appendChild(comments);
-        card.appendChild(downloads);
-        gallery.appendChild(card);
-
     });
-
+    
     lightbox.refresh();
     
 }
